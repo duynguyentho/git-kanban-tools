@@ -8,8 +8,9 @@ class GitlabWebhookReceiver {
     }
 
     receive(action) {
+        console.log(action)
         this.observers.forEach(observer => {
-            observer.update(action);
+            observer.processWebhookAction(action);
         });
     }
 }
