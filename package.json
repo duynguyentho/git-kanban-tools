@@ -1,0 +1,16 @@
+{
+  "name": "git-kanban-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node ./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "node ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.3"
+  }
+}
