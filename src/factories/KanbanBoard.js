@@ -9,6 +9,10 @@ class KanbanBoard {
     processWebhookAction(action) {
         throw new Error('Method "processWebhookAction" must be implemented');
     }
+
+    updateTask(action, payload) {
+        return;
+    }
 }
 
-module.exports = KanbanBoard;
+export default KanbanBoard;

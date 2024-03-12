@@ -1,8 +1,8 @@
-const Trello = require("./Trello");
-const Nulab = require("./Nulab");
+import Trello from "./Trello.js";
+import Nulab from "./Nulab.js";
 
 class KanbanBoardHandlerFactory {
-    static createHandler(boardType) {
+     createHandler(boardType) {
         switch (boardType) {
             case 'Trello':
                 return new Trello();
@@ -14,10 +14,4 @@ class KanbanBoardHandlerFactory {
     }
 }
 
-module.exports = {KanbanBoardHandlerFactory};
-//
-// const trelloHandler = KanbanBoardHandlerFactory.createHandler('Trello');
-// const backlogHandler = KanbanBoardHandlerFactory.createHandler('Backlog');
-//
-// trelloHandler.processWebhookAction('CREATE');
-// backlogHandler.processWebhookAction('UPDATE');
+export default { KanbanBoardHandlerFactory };

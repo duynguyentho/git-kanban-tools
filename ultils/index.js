@@ -1,5 +1,4 @@
-const processBodyData = (data) => {
+export const processBodyData = (data) => {
     return 'push'
 }
 
-module.exports = { processBodyData }
