@@ -1,0 +1,36 @@
+{
+  "name": "git-kanban",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "_moduleAliases": {
+    "@enums": "dist/enums",
+    "@factories": "dist/factories",
+    "@ultils": "dist/ultils"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "npm run build && node dist/index.js",
+    "start:nodemon": "./node_modules/nodemon/bin/nodemon.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "module-alias": "^2.2.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/module-alias": "^2.0.4",
+    "@types/node": "^20.11.28",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.4.2"
+  }
+}
