@@ -10,3 +10,4 @@ export const STATUS = {
     RESOLVED: 4,
     CLOSE: 5,
 };
+

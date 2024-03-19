@@ -10,4 +10,17 @@ const handleDescriptionMergeRequest = (inputString: string): RegExpMatchArray | 
     return <RegExpMatchArray>inputString.match(regex);
 };
 
-export { processBodyData };
+const stringToMarkdown = (inputString: string): string  => {
+    inputString = inputString
+        // .replace(/\*/g, '\\*')
+        .replace(/\n/g, '<br>')
+    ;
+
+    return `*${inputString}*`;
+}
+
+const getIssue = (payload: any): string => {
+    return '';
+}
+
+export { processBodyData, stringToMarkdown };

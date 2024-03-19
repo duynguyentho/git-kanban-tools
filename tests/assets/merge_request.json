@@ -1,0 +1,151 @@
+{
+  "object_kind": "merge_request",
+  "event_type": "merge_request",
+  "user": {
+    "id": 20421523,
+    "name": "Duy Nguyen Tho",
+    "username": "duynguyentho",
+    "avatar_url": "https://secure.gravatar.com/avatar/04e4d6fb734541de2e20152879eea1842212eaf33f466e6160e6ea531e57294f?s=80&d=identicon",
+    "email": "[REDACTED]"
+  },
+  "project": {
+    "id": 55712262,
+    "name": "git-kanban-tool",
+    "description": null,
+    "web_url": "https://gitlab.com/automation-kanban/git-kanban-tool",
+    "avatar_url": null,
+    "git_ssh_url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+    "git_http_url": "https://gitlab.com/automation-kanban/git-kanban-tool.git",
+    "namespace": "automation-kanban",
+    "visibility_level": 0,
+    "path_with_namespace": "automation-kanban/git-kanban-tool",
+    "default_branch": "main",
+    "ci_config_path": "",
+    "homepage": "https://gitlab.com/automation-kanban/git-kanban-tool",
+    "url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+    "ssh_url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+    "http_url": "https://gitlab.com/automation-kanban/git-kanban-tool.git"
+  },
+  "object_attributes": {
+    "assignee_id": null,
+    "author_id": 20421523,
+    "created_at": "2024-03-10 14:10:04 UTC",
+    "description": "# Backlog URLs\n- https://davenguyen.backlog.com/view/TEST-1\n-",
+    "draft": true,
+    "head_pipeline_id": null,
+    "id": 287668377,
+    "iid": 2,
+    "last_edited_at": "2024-03-10 14:13:49 UTC",
+    "last_edited_by_id": 20421523,
+    "merge_commit_sha": null,
+    "merge_error": null,
+    "merge_params": {
+      "force_remove_source_branch": "1"
+    },
+    "merge_status": "cannot_be_merged",
+    "merge_user_id": null,
+    "merge_when_pipeline_succeeds": false,
+    "milestone_id": null,
+    "source_branch": "branch1",
+    "source_project_id": 55712262,
+    "state_id": 1,
+    "target_branch": "main",
+    "target_project_id": 55712262,
+    "time_estimate": 0,
+    "title": "Draft: Branch1",
+    "updated_at": "2024-03-10 14:13:49 UTC",
+    "updated_by_id": 20421523,
+    "prepared_at": "2024-03-10 14:10:05 UTC",
+    "url": "https://gitlab.com/automation-kanban/git-kanban-tool/-/merge_requests/2",
+    "source": {
+      "id": 55712262,
+      "name": "git-kanban-tool",
+      "description": null,
+      "web_url": "https://gitlab.com/automation-kanban/git-kanban-tool",
+      "avatar_url": null,
+      "git_ssh_url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+      "git_http_url": "https://gitlab.com/automation-kanban/git-kanban-tool.git",
+      "namespace": "automation-kanban",
+      "visibility_level": 0,
+      "path_with_namespace": "automation-kanban/git-kanban-tool",
+      "default_branch": "main",
+      "ci_config_path": "",
+      "homepage": "https://gitlab.com/automation-kanban/git-kanban-tool",
+      "url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+      "ssh_url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+      "http_url": "https://gitlab.com/automation-kanban/git-kanban-tool.git"
+    },
+    "target": {
+      "id": 55712262,
+      "name": "git-kanban-tool",
+      "description": null,
+      "web_url": "https://gitlab.com/automation-kanban/git-kanban-tool",
+      "avatar_url": null,
+      "git_ssh_url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+      "git_http_url": "https://gitlab.com/automation-kanban/git-kanban-tool.git",
+      "namespace": "automation-kanban",
+      "visibility_level": 0,
+      "path_with_namespace": "automation-kanban/git-kanban-tool",
+      "default_branch": "main",
+      "ci_config_path": "",
+      "homepage": "https://gitlab.com/automation-kanban/git-kanban-tool",
+      "url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+      "ssh_url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+      "http_url": "https://gitlab.com/automation-kanban/git-kanban-tool.git"
+    },
+    "last_commit": {
+      "id": "f236ad0641d6bd15ce512eb30d8b2cd5aec3196b",
+      "message": "Add new config template",
+      "title": "Add new config template",
+      "timestamp": "2024-03-09T12:58:49+00:00",
+      "url": "https://gitlab.com/automation-kanban/git-kanban-tool/-/commit/f236ad0641d6bd15ce512eb30d8b2cd5aec3196b",
+      "author": {
+        "name": "Duy Nguyen Tho",
+        "email": "[REDACTED]"
+      }
+    },
+    "work_in_progress": true,
+    "total_time_spent": 0,
+    "time_change": 0,
+    "human_total_time_spent": null,
+    "human_time_change": null,
+    "human_time_estimate": null,
+    "assignee_ids": [
+
+    ],
+    "reviewer_ids": [
+
+    ],
+    "labels": [
+
+    ],
+    "state": "opened",
+    "blocking_discussions_resolved": true,
+    "first_contribution": false,
+    "detailed_merge_status": "draft_status",
+    "action": "update"
+  },
+  "labels": [
+
+  ],
+  "changes": {
+    "description": {
+      "previous": "#Backlog URLs\nhttps://davenguyen.backlog.com/view/TEST-1",
+      "current": "# Backlog URLs\n- https://davenguyen.backlog.com/view/TEST-1\n-"
+    },
+    "last_edited_at": {
+      "previous": "2024-03-10 14:13:30 UTC",
+      "current": "2024-03-10 14:13:49 UTC"
+    },
+    "updated_at": {
+      "previous": "2024-03-10 14:13:30 UTC",
+      "current": "2024-03-10 14:13:49 UTC"
+    }
+  },
+  "repository": {
+    "name": "git-kanban-tool",
+    "url": "git@gitlab.com:automation-kanban/git-kanban-tool.git",
+    "description": null,
+    "homepage": "https://gitlab.com/automation-kanban/git-kanban-tool"
+  }
+}

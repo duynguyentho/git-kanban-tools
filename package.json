@@ -8,11 +8,22 @@
     "@factories": "dist/factories",
     "@ultils": "dist/ultils"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "node_modules/variables/.+\\.(j|t)sx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!variables/.*)"
+    ]
+  },
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "npm run build && node dist/index.js",
-    "start:nodemon": "./node_modules/nodemon/bin/nodemon.js"
+    "start:nodemon": "./node_modules/nodemon/bin/nodemon.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -20,15 +31,20 @@
   "dependencies": {
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
-    "module-alias": "^2.2.3"
+    "module-alias": "^2.2.3",
+    "supertest": "^6.3.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@types/module-alias": "^2.0.4",
     "@types/node": "^20.11.28",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.0",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.2"

@@ -20,7 +20,7 @@ app.post('/webhook', (req, res, next) => {
     try {
         const event : string = processBodyData(req.body);
 
-        webhookReceiver.receive(event)
+        webhookReceiver.receive(event, req.body)
         console.log(event)
         return res.status(200).json({});
     } catch (err) {
