@@ -1,14 +1,37 @@
+import {addJob, jobQueue} from "../utils/queue";
+
 const processBodyData = (data: any): string => {
     const event = data.object_kind;
     const payload = handleDescriptionMergeRequest(data?.object_attributes?.description);
-    console.log(payload);
-    return data.object_kind;
+
+    if (payload) {
+        const issueKeys = getIssueKeys(payload);
+
+        issueKeys.forEach(issueKey => {
+            addJob({
+                type: 'updateTask',
+                payload: {
+                    issueKey: issueKey,
+                    action: data?.object_attributes?.action
+                }
+            })
+        })
+    }
+    return data?.object_attributes?.action;
 };
 
 const handleDescriptionMergeRequest = (inputString: string): RegExpMatchArray | null => {
     const regex = /https?:\/\/\S+/g;
     return <RegExpMatchArray>inputString.match(regex);
 };
+
+const getIssueKeys = (content: string[]) => {
+    const regex = /TEST-\d+/g;
+    return content.map((url: string) => {
+        // @ts-ignore
+        return url.match(regex) ? url.match(regex)[0] : null
+    })
+}
 
 const stringToMarkdown = (inputString: string): string  => {
     inputString = inputString

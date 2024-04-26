@@ -3,9 +3,16 @@ import 'module-alias/register';
 import {NulabAxios} from "../utils/axios";
 import {STATUS} from '@enums/index';
 
+import {Worker} from "bullmq";
+import {rootLogger} from "ts-jest";
+
 class Nulab extends KanbanBoard {
     processWebhookAction(action: string, payload: any): void {
-        this.updateTask(action, payload);
+        console.log(action)
+        const worker = new Worker('sayHelloQueue', async job => {
+            await console.log(job);
+        });
+        // this.updateTask(action, payload);
         return
     }
 
@@ -23,20 +30,22 @@ class Nulab extends KanbanBoard {
              * unapproval
              * merge
              */
-            const issueKey =
+            const issueKey = 'TEST-1';
 
             switch (action) {
                 case 'open':
-                case 'merge_request':
                     await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
                     await this.updateIssue(issueKey, payload);
                     break;
                 case 'close':
                     await this.changeStatus(STATUS.CLOSE, issueKey);
                     break;
+                case 'reopen':
+                    await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
+                    break;
                 case 'update':
                     await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
-
+                    await this.updateIssue(issueKey, payload);
                     break;
                 case 'merge':
                     await this.changeStatus(STATUS.RESOLVED, issueKey);
