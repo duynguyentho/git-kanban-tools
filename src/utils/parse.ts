@@ -1,7 +1,6 @@
 import {addJob, jobQueue} from "../utils/queue";
 
 const processBodyData = (data: any): string => {
-    const event = data.object_kind;
     const payload = handleDescriptionMergeRequest(data?.object_attributes?.description);
 
     if (payload) {
@@ -12,7 +11,8 @@ const processBodyData = (data: any): string => {
                 type: 'updateTask',
                 payload: {
                     issueKey: issueKey,
-                    action: data?.object_attributes?.action
+                    action: data?.object_attributes?.action,
+                    payload: data
                 }
             })
         })

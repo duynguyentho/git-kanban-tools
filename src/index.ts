@@ -8,6 +8,7 @@ import {processBodyData} from "./utils/parse";
 import * as process from "process";
 import {addJob} from "./utils/queue";
 import {redisConnection} from "./utils/redis";
+import {Worker} from "bullmq";
 
 dotenv.config();
 
@@ -20,15 +21,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-addJob({
-    type: 'dint'
-})
-
+// console.log(action)
+const worker = new Worker('processKanbanBoard', async job => {
+    const {data} = job
+    webhookReceiver.receive(data.payload.action, data.payload.payload, data.payload.issueKey)
+}, {connection: redisConnection});
 app.post('/webhook', (req, res, next) => {
     try {
         const event : string = processBodyData(req.body);
-        webhookReceiver.receive(event, req.body);
-        console.log(event);
         return res.status(200).json({});
     } catch (err) {
         res.json(err)

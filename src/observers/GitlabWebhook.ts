@@ -18,9 +18,9 @@ class GitlabWebhookReceiver {
         }
     }
 
-    receive(action: string, payload: any): void {
+    receive(action: string, payload: any, issueKey: string): void {
         this.observers.forEach(observer => {
-            observer.processWebhookAction(action, payload);
+            observer.processWebhookAction(action, payload, issueKey);
         });
     }
 }

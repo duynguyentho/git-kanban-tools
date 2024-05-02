@@ -6,7 +6,7 @@ abstract class KanbanBoard {
     }
 
     // Method to process webhook action and update kanban board
-    abstract processWebhookAction(action: string, payload: any): void;
+    abstract processWebhookAction(action: string, payload: any, issueKey?: string): void;
 }
 
 export default KanbanBoard;

@@ -1,0 +1,33 @@
+{
+  "status": [
+      {
+        "name": "Open",
+        "color": "#ed8077",
+        "displayOrder": 1000
+      },
+      {
+        "name": "In Progress",
+        "color": "#4488c5",
+        "displayOrder": 2000
+      },
+      {
+        "name": "Resolved",
+        "color": "#5eb5a6",
+        "displayOrder": 3000
+      },
+      {
+        "name": "Closed",
+        "color": "#b0be3c",
+        "displayOrder": 4000
+      }
+  ],
+  "action": {
+    "open": "OPEN",
+    "close": "RESOLVED",
+    "reopen": "OPEN",
+    "update": "IN PROGRESS",
+    "approved": "RESOLVED",
+    "unapproved": "IN REVIEW",
+    "merge": "CLOSED"
+  }
+}

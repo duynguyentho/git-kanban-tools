@@ -3,21 +3,15 @@ import 'module-alias/register';
 import {NulabAxios} from "../utils/axios";
 import {STATUS} from '@enums/index';
 
-import {Worker} from "bullmq";
-import {rootLogger} from "ts-jest";
 
 class Nulab extends KanbanBoard {
-    processWebhookAction(action: string, payload: any): void {
-        console.log(action)
-        const worker = new Worker('sayHelloQueue', async job => {
-            await console.log(job);
-        });
-        // this.updateTask(action, payload);
+    processWebhookAction(action: string, payload: any, issueKey: string): void {
+        this.updateTask(action, payload, issueKey);
         return
     }
 
     // @ts-ignore
-    async updateTask(action: string, payload: any): Promise<number> {
+    async updateTask(action: string, payload: any, issueKey): Promise<number> {
         try {
             /**
              * open
@@ -30,8 +24,6 @@ class Nulab extends KanbanBoard {
              * unapproval
              * merge
              */
-            const issueKey = 'TEST-1';
-
             switch (action) {
                 case 'open':
                     await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
@@ -44,7 +36,11 @@ class Nulab extends KanbanBoard {
                     await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
                     break;
                 case 'update':
-                    await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
+                    // mark as draft
+                    if (payload?.object_attributes?.draft) {
+                        await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
+                    }
+
                     await this.updateIssue(issueKey, payload);
                     break;
                 case 'merge':
@@ -77,6 +73,8 @@ class Nulab extends KanbanBoard {
             const response = await NulabAxios.patch(`/issues/${issueKey}`, {
                 comment: payload?.object_attributes?.description,
             });
+
+            console.log(`Updating task ${issueKey}`)
             return response.data;
         } catch (err) {
             console.log('updateIssue', err);
