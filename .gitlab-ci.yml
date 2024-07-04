@@ -1,0 +1,2 @@
+default:
+  merge_request_template: '.gitlab/merge_request_template.md'

@@ -16,7 +16,7 @@ export const NulabAxios: AxiosInstance = axios.create({
 
 export const getIssueType = async (): Promise<any> => {
     try {
-        const response = await NulabAxios.get(`/projects/${process.env.PROJECT_ID}/issueTypes`);
+        const response = await NulabAxios.get(`/projects/${process.env.PROJECT_KEY_OR_ID}/issueTypes`);
         return response.data;
     } catch (error) {
         console.log(`Failed API`, error);
