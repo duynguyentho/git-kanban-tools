@@ -33,14 +33,14 @@ class Nulab extends KanbanBoard {
                     await this.changeStatus(STATUS.CLOSE, issueKey);
                     break;
                 case 'reopen':
+                    if (await this.handleDraftIssue(payload?.object_attributes?.draft, issueKey)) {
+                        break;
+                    }
+
                     await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
                     break;
                 case 'update':
-                    // mark as draft
-                    if (payload?.object_attributes?.draft) {
-                        await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
-                    }
-
+                    this.handleDraftIssue(payload?.object_attributes?.draft, issueKey)
                     await this.updateIssue(issueKey, payload);
                     break;
                 case 'merge':
@@ -63,7 +63,7 @@ class Nulab extends KanbanBoard {
             });
             return response.data;
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             // throw new Error(`Error getting issue types for project`);
         }
     }
@@ -71,14 +71,29 @@ class Nulab extends KanbanBoard {
     private async updateIssue(issueKey: string, payload: any) {
         try {
             const response = await NulabAxios.patch(`/issues/${issueKey}`, {
-                comment: payload?.object_attributes?.description,
+                comment: `#${payload?.object_attributes?.title}\n${payload?.object_attributes?.description}`,
             });
 
             console.log(`Updating task ${issueKey}`)
             return response.data;
         } catch (err) {
-            console.log('updateIssue', err);
+            // console.log('updateIssue', err);
         }
+    }
+
+    private async handleDraftIssue(isDraft: boolean | undefined | null, issueKey: string): Promise<boolean>
+    {
+        if (isDraft === undefined) {
+            return false;
+        }
+
+        if (isDraft) {
+            await this.changeStatus(STATUS.OPEN, issueKey);
+        } else {
+            await this.changeStatus(STATUS.IN_PROGRESS, issueKey);
+        }
+
+        return true;
     }
 }
 
